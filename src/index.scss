@@ -1,4 +1,50 @@
+@import './component';
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+    font-family: $primary-font;
+}
+
 .row {
     display: flex;
     flex-flow: row nowrap;
+    align-items: center;
+}
+
+.column {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+::-webkit-scrollbar {
+    background-color: white;
+    width: 5px;
+}
+
+::-webkit-slider-thumb {
+    background-color: grey;
+    width: 5px;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(20, 20, 20, 0.726);
+    z-index: 1;
+    border-radius: 15px;
+    opacity: 0;
+    transition: .5s;
+
+    &:hover {
+        opacity: 1;
+    }
 }

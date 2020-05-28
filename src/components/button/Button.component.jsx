@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Button = ({ buttonAction, children }) => {
+const Button = ({ buttonAction, children, className }) => {
     return (
-        <div className="button">
-            <button className="form-submit" onClick={buttonAction}>
+        <div className="button-holder">
+            <button className={`${className}`} onClick={buttonAction}>
                 {children}
             </button>
         </div>

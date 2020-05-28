@@ -1,17 +1,20 @@
 import React from 'react';
 import EventModal from './event-modal/EventModal.component';
 import SideBar from './side-bar/SideBar.component';
-import SearchBar from './search-bar/SearchBar.component';
-import EventList from './events-list/EventList.component';
+import TodaysEvents from './todays-events/TodaysEvents.component';
+import './app.styles.scss';
+import Header from './header/Header.component';
+import MoreEvents from './more-events/MoreEvents.component';
 
 const App = () => {
     return (
-        <div className="row">
+        <div className="app-container row">
             <SideBar />
             <div className="main-content">
+                <Header />
                 <EventModal />
-                <SearchBar />
-                <EventList />
+                <TodaysEvents />    
+                <MoreEvents />
             </div>
         </div>
     )
