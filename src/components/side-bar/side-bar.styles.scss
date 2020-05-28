@@ -1,0 +1,9 @@
+@import '../../component';
+
+.side-bar {
+    width: 17%;
+    background-color: $primary-color;
+    height: 100vh;
+    padding: 1em;
+    align-items: center;
+}

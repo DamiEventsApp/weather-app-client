@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes, { objectOf } from 'prop-types';
-import EventCard from '../event-card/EventCard.component';
-import Button from '../button/Button.component';
 import EventList from '../events-list/EventList.component';
+import './more-events.styles.scss';
 
-const TodaysEvents = ( { events, openEventModal } ) => {
+const MoreEvents = ( { events, openEventModal } ) => {
     events = [
         {
             id: 1,
@@ -34,21 +33,19 @@ const TodaysEvents = ( { events, openEventModal } ) => {
     ]
 
     return (
-        <div className="todays-events">
-            <h2>Today</h2>
-            <EventList today={true} events={events}/>
+        <div className="more-events">
+            <h2>More</h2>
+            <EventList events={events}/>
         </div>
     )
 };
 
-TodaysEvents.defaultProps = {
-    fetchEvents: () => {},
+MoreEvents.defaultProps = {
     events: [],
 };
 
-TodaysEvents.propTypes = {
-    fetchEvents: PropTypes.func,
+MoreEvents.propTypes = {
     events: PropTypes.arrayOf(objectOf(PropTypes.string))
 }
 
-export default TodaysEvents;
+export default MoreEvents;

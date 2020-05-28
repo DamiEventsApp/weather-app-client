@@ -1,0 +1,28 @@
+@import '../../component';
+
+div.search-bar {
+    width: 100%;
+    align-items: flex-end;
+    input {
+        border: none;
+        border-bottom: 1px solid rgb(196, 196, 196);
+        width: 40%;
+        padding-bottom: 1em;
+    }
+
+    button {
+        padding: .5em 1em;
+        margin-left: .5em;
+        border: none;
+        background-color: $primary-color;
+        border-radius: 5px;
+        color: white;
+    }
+
+    .header-search-icon {
+        background-color: rgba(197, 197, 197, 0.603);
+        padding: .5em;
+        border-radius: 5px;
+        margin-right: .5em;
+    }
+}

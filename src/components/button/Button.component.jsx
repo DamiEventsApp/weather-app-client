@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 const Button = ({ buttonAction, children }) => {
     return (
-        <div className="button">
-            <button className="form-submit" onClick={buttonAction}>
+        <div className="button-holder">
+            <button className="button" onClick={buttonAction}>
                 {children}
             </button>
         </div>

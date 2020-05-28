@@ -1,18 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './input.styles.scss';
 
 const Input = ({ handleChange, value, placeholder, id }) => {
     return (
-        <div className="form-input">
             <input 
                 id={id}
                 type="text" 
                 placeholder={placeholder}
                 onChange={handleChange} 
-                className="search-input"
+                className="input"
                 value={value}
             />
-        </div>
     )
 };
 

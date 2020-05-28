@@ -4,6 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import Input from '../input/Input.component';
 import Button from '../button/Button.component';
 import PropTypes from 'prop-types';
+import './event-modal.styles.scss';
 
 const EventModal = ( { action, currentEvent, updateEvent, createNewEvent } ) => {
     let [eventTitle, setEventTitle] = useState("");
@@ -54,7 +55,9 @@ const EventModal = ( { action, currentEvent, updateEvent, createNewEvent } ) => 
         <div className="event-modal">
             <div className="event-modal">
                 <Button buttonAction={setDateToToday}>Today</Button>
-                <Input id="title" placeholder="Event Title" value={currentEvent ? currentEvent.title : eventTitle} onChange={handleChange} />
+                <div className="form-input">
+                    <Input id="title" placeholder="Event Title" value={currentEvent ? currentEvent.title : eventTitle} onChange={handleChange} />
+                </div>
                 <DatePicker selected={eventDate} onChange={handleDateChange}/>
                 <Button buttonAction={handleSubmit}>SUBMIT</Button>
             </div>
