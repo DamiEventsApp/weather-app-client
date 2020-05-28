@@ -20,18 +20,15 @@ const SearchBar = ({ searchEvents }) => {
 
     return (
         <div className="search-bar row">
-            <div className="header-search-icon">
-                <FontAwesomeIcon icon={faSearch} />
-            </div>
             <Input 
                 value={searchTerm}
                 handleChange={handleChange}
                 placeholder={"What event are you looking for?"}
                 id="search-bar"
             />
-            {/* <Button buttonAction={handleSubmit}>
-                Search
-            </Button> */}
+            <div className="header-search-icon">
+                <FontAwesomeIcon icon={faSearch} />
+            </div>
         </div>
     )
 };

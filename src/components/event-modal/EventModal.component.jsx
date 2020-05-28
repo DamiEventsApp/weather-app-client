@@ -5,6 +5,8 @@ import Input from '../input/Input.component';
 import Button from '../button/Button.component';
 import PropTypes from 'prop-types';
 import './event-modal.styles.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 const EventModal = ( { action, currentEvent, updateEvent, createNewEvent } ) => {
     let [eventTitle, setEventTitle] = useState("");
@@ -52,14 +54,15 @@ const EventModal = ( { action, currentEvent, updateEvent, createNewEvent } ) => 
     };
 
     return (
-        <div className="event-modal">
-            <div className="event-modal">
-                <Button buttonAction={setDateToToday}>Today</Button>
-                <div className="form-input">
-                    <Input id="title" placeholder="Event Title" value={currentEvent ? currentEvent.title : eventTitle} onChange={handleChange} />
+        <div className="event-modal column">
+            <div className="event-form column">
+                <div className="close-icon">
+                    <FontAwesomeIcon icon={faTimes} />
                 </div>
+                <Input id="title" className="modal-input" placeholder="Event Title" value={currentEvent ? currentEvent.title : eventTitle} onChange={handleChange} />
                 <DatePicker selected={eventDate} onChange={handleDateChange}/>
-                <Button buttonAction={handleSubmit}>SUBMIT</Button>
+                <Button buttonAction={setDateToToday} className="event-modal-btn">Use Today's Date</Button>
+                <Button buttonAction={handleSubmit} className="event-modal-btn">SUBMIT</Button>
             </div>
         </div>
     )
