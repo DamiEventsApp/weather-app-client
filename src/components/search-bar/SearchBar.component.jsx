@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import Input from '../input/Input.component';
 import Button from '../button/Button.component';
 
@@ -11,11 +12,11 @@ const SearchBar = ({ searchEvents }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        searchEvents();
+        searchEvents(searchTerm);
     }
 
     return (
-        <div className="search-bar">
+        <div className="search-bar row">
             <Input 
                 value={searchTerm}
                 handleChange={handleChange}

@@ -5,12 +5,12 @@ import Button from '../button/Button.component';
 const EventCard = ({ event, removeFromList, deleteEvent }) => {
     const { title, id, date } = event;
 
-    const sendEventDeleteRequest = () => {
-        deleteEvent();
+    const sendEventDeleteRequest = id => {
+        deleteEvent(id);
     }
     
-    const removeEvent = event => {
-        removeFromList(event);
+    const removeEvent = id => {
+        removeFromList(id);
     }
 
     return (
@@ -25,6 +25,8 @@ const EventCard = ({ event, removeFromList, deleteEvent }) => {
 
 EventCard.defaultProps = {
     event: [],
+    deleteEvent: () => {},
+    removeFromList: () => {},
 }
 
 EventCard.propTypes = {

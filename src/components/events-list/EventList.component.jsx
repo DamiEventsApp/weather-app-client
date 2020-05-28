@@ -1,26 +1,37 @@
 import React, { useEffect, useState } from 'react';
 import EventCard from '../event-card/EventCard.component';
-import Axios from 'axios';
+import PropTypes, { objectOf } from 'prop-types';
+import Button from '../button/Button.component';
 
-const EventList = ({ fetchEvents, eventQuery }) => {
-    const [events, setEvents] = useState({events: []});
+const EventList = ({ events, fetchEvents, openEventModal }) => {
 
     useEffect(() => {
-        fetchEvents();
-    }, []);
+        const fetchData = async() => {
+            fetchEvents();
+        }
+        fetchData();
+    }, [])
 
-    const removeFromList = event => {
-        filterEvents(event);
+    const removeFromList = id => {
+        removeEvent(id);
     }
 
-    const filterEvents = () => {
-        events = events.filter(event => event.title.includes(eventQuery));
+    const removeEvent = (id) => {
+        events = events.filter(event => event.id != id);
+    }
+
+    const filterEvents = query => {
+        events = events.filter(event => event.title.includes(query) || event.date.includes(query));
     };
 
     return (
         <div className="event-list row">
            {
-               events && events.map((event, index) => <EventCard key={index} event={event} removeFromList={removeFromList} />)
+               events.length ? events.map((event, index) => <EventCard key={index} event={event} removeFromList={removeFromList} />) :
+               <div className="empty-event-list">
+                   <h3>No events here yet! Make some?</h3>
+                   <Button buttonAction={openEventModal}>New Event</Button>
+               </div>
            }
         </div>
     )
@@ -28,12 +39,12 @@ const EventList = ({ fetchEvents, eventQuery }) => {
 
 EventList.defaultProps = {
     fetchEvents: PropTypes.func,
-    eventQuery: PropTypes.string,
-}
+    events: PropTypes.arrayOf(objectOf(PropTypes.string)),
+};
 
 EventList.defaultProps = {
     fetchEvents: () => {},
-    eventQuery: "",
-}
+    events: [],
+};
 
 export default EventList;
