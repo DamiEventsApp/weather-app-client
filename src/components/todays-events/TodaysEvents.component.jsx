@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PropTypes, { objectOf } from 'prop-types';
-import EventCard from '../event-card/EventCard.component';
-import Button from '../button/Button.component';
 import EventList from '../events-list/EventList.component';
 
 const TodaysEvents = ( { events, openEventModal } ) => {

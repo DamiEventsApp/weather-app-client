@@ -45,7 +45,7 @@ EventCard.defaultProps = {
 }
 
 EventCard.propTypes = {
-    event: objectOf(PropTypes.string),
+    event: PropTypes.object,
     deleteEvent: PropTypes.func,
     setEvent: PropTypes.func,
     openEventModal: PropTypes.func,

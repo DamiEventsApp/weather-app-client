@@ -9,7 +9,7 @@ const LoginForm = ({ login }) => {
     let [ email, setEmail ] = useState("")
     let [ password, setPassword ] = useState("")
 
-    const handleChange = (e) => {
+    const handleChange = e => {
         const value = e.target.value;
 
         if (e.target.id === 'email') {
@@ -20,9 +20,18 @@ const LoginForm = ({ login }) => {
         setPassword(value);
     }
 
-    const handleLogin = () => {
+    const handleLogin = e => {
+        e.preventDefault();
         const form = new FormData();
+        form.set('email', email);
+        form.set('password', password);
         login(form);
+        resetForm();
+    }
+
+    const resetForm = () => {
+        setEmail("");
+        setPassword("");
     }
     
     return (
