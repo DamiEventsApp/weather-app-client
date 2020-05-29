@@ -12,19 +12,11 @@ const EventList = ({events, fetchEvents, openEventModal, today }) => {
             fetchEvents();
         }
         fetchData();
-    }, [])
+    }, [fetchEvents])
 
-    const removeFromList = id => {
-        removeEvent(id);
-    }
-
-    const removeEvent = (id) => {
-        let newfilteredEvents = filteredEvents.filter(event => event.id != id);
+    const filterEvents = id => {
+        let newfilteredEvents = filteredEvents.filter(event => event.id !== id);
         setFilteredEvents(newfilteredEvents)
-    }
-
-    const filterEvents = query => {
-        events = events.filter(event => event.title.includes(query) || event.date.includes(query));
     };
 
     return (
@@ -33,7 +25,7 @@ const EventList = ({events, fetchEvents, openEventModal, today }) => {
                 filteredEvents.length ? 
                 <div className="filled-list">
                     <div className="events row">
-                        {filteredEvents.map((event, index) => <EventCard key={index} index={index} event={event} today={today} removeFromList={removeFromList} />)} 
+                        {filteredEvents.map((event, index) => <EventCard key={index} index={index} event={event} today={today} />)} 
                     </div>
                     {today ? "" : <Button>Next</Button>}
                 </div> :

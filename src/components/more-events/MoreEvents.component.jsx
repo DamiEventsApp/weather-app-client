@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PropTypes, { objectOf } from 'prop-types';
 import EventList from '../events-list/EventList.component';
 import './more-events.styles.scss';
