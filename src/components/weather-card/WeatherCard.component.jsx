@@ -33,7 +33,6 @@ const WeatherCard = () => {
             await getLocationData()
             if (countryLocation) {
                 const weatherResult = await weatherAPI.get("/weather", {params: {q: "kenya"}});
-                console.log(weatherResult)
                 const { data } = weatherResult;
                 const { weather } = data;
                 const [ weatherData ] = weather;
@@ -45,7 +44,7 @@ const WeatherCard = () => {
         }
 
         fetchData();
-    }, [countryLocation])
+    })
 
     return (
         <div className="weather-card column">

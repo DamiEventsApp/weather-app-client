@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes, { objectOf } from 'prop-types';
+import PropTypes from 'prop-types';
 import EventList from '../../containers/event-list/EventList.container';
 import './more-events.styles.scss';
 import PaginationControls from '../../containers/pagination/Pagination.container';

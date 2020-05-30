@@ -26,12 +26,11 @@ const EventCard = ({ event, setCurrentEvent,
             const { weather } = data;
             const [ weatherData ] = weather;
             const { description, icon } = weatherData;
-            console.log(description, icon)
             setWeatherInfo(description)
             setWeatherIcon(icon)
         }
         fetchData();
-    },[])
+    });
 
     const sendEventDeleteRequest = e => {
         e.preventDefault();

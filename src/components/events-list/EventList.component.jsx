@@ -10,7 +10,7 @@ const EventList = ({events, fetchEvents, toggleEventModal, today, authToken }) =
             fetchEvents(authToken, today);
         }
         fetchData();
-    }, [])
+    })
 
     return (
         <div className="event-list">
