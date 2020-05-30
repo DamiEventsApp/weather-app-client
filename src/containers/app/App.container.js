@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import App from "../../App.component";
+import App from "../../components/app/App.component";
 
 const mapStateToProps = state => ({
    loggedIn: state.authReducer.loggedIn, 
