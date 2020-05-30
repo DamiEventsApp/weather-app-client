@@ -6,6 +6,10 @@ Dami Event
 * Email - john@doe.com
 * Password - guestuser
 
+# Upcoming Features
+* Animations for loading states
+* Flash messages for error and success messages
+
 # What it does
 It is an event management app
 
