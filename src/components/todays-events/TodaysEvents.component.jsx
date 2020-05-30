@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import EventList from '../../containers/event-list/EventList.container';
 import PaginationControls from '../../containers/pagination/Pagination.container';
+import './todays-events.styles.scss';
 
 const TodaysEvents = ( { events, pagination, fetchEvents } ) => {
     const { next, prev } = pagination;

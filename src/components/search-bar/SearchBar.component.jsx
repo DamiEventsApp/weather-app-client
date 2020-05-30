@@ -27,7 +27,10 @@ const SearchBar = ({ searchEvents, history, authToken, clearSearchResults }) => 
 
     const handleSubmit = e => {
         e.preventDefault();
+        if (!searchTerm) return;
+
         clearSearchResults();
+
         const form = new FormData();
 
         if (searchByTerm === true) {
@@ -54,7 +57,7 @@ const SearchBar = ({ searchEvents, history, authToken, clearSearchResults }) => 
                         <Input 
                             value={searchTerm}
                             handleChange={handleChange}
-                            placeholder={"Can't find what you are looking for? Try today or yesterday or tomorrow ..."}
+                            placeholder={"Can't find what you are looking for? Try a location or title"}
                             id="search-bar"
                             type="text"
                             className="search-input"

@@ -7,12 +7,12 @@
     text-align: center;
     
     @media #{$medium-mq} {
-        margin-right: 1em;
+        margin-right: 1.2em;
         width: 100%;
     }
 
     @media #{$large-mq} {
-        width: 20%;
+        width: 23%;
     }
     
     .cover-image {

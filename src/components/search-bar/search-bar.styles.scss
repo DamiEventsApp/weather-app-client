@@ -17,11 +17,15 @@
             border: none;
             border-bottom: 1px solid rgb(196, 196, 196);
             padding-bottom: 1em;
+
+            &:hover {
+              cursor: text;
+            }
         }
         
         input {
             width: 100%;
-            padding: .6em;
+            padding: .6em 0;
             border: .5px solid $primary-color;
         }
     

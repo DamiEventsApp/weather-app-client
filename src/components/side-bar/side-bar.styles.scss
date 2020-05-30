@@ -2,17 +2,13 @@
 
 div.side-bar {
     display: none;
-    background-color: $primary-color;
+    background-color: white;
     height: 100vh;
     align-items: flex-start;
     text-align: left;
     
-    @media #{$medium-mq} {
-        width: 30%;
-        display: flex;
-    }
-
     @media #{$large-mq} {
+        display: flex;
         width: 18%;
     }
     
@@ -27,7 +23,7 @@ div.side-bar {
             border-radius: 0;
             border: none;
             background: 0 0;
-            color: white;
+            color: rgb(26, 26, 26);
             transition: .5s;
             text-align: left;
             text-decoration: none;
@@ -44,6 +40,7 @@ div.side-bar {
         .side-bar-btn {
             &.new-event-btn {
                 background-color: rgb(109, 148, 255);
+                color: white;
             }
         }
     }

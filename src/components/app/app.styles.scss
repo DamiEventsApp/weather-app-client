@@ -5,11 +5,13 @@ div.app-container {
     width: 100%;
     
     .main-content {
+      position: relative;
         padding: 1em;
         height: 100vh;
         overflow: hidden;
         overflow-y: scroll;
         width: 100%;
+        background-color: rgb(238, 235, 255);
         
         @media #{$medium-mq} {
             width: 70%;
