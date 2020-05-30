@@ -39,10 +39,10 @@ const LoginForm = ({ login }) => {
             <Logo />
             <form>
                 <div className="login-form-element">
-                    <Input placeholder="Email Address" className="login-input" id="email" value={email} handleChange={handleChange} />
+                    <Input type="email" placeholder="Email Address" className="login-input" id="email" value={email} handleChange={handleChange} />
                 </div>
                 <div className="login-form-element">
-                    <Input placeholder="Password" className="login-input" id="password" value={password} handleChange={handleChange}/>
+                    <Input type="password" placeholder="Password" className="login-input" id="password" value={password} handleChange={handleChange}/>
                 </div>
                 <div className="login-form-element">
                     <Button className="login-input" buttonAction={handleLogin}>Login</Button>
