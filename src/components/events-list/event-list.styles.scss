@@ -1,7 +1,31 @@
+@import '../../component';
+
 .event-list {
     margin-top: 3em;
+    align-items: center;
 
     .filled-list {
         width: 100%;
+    }
+
+    .events {
+        align-items: flex-start;
+    }
+
+    .empty-event-list {
+        align-items: center;
+
+        .empty-event-btn {
+            margin-top: 1em;
+            padding: 1em;
+            border: none;
+            transition: .5s;
+
+            &:hover {
+                background-color: $primary-color;
+                color: white;
+                cursor: pointer;
+            }
+        }
     }
 }

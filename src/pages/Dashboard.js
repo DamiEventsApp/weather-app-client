@@ -1,18 +1,18 @@
 import React from 'react';
-import EventModal from '../components/event-modal/EventModal.component';
+import EventModal from '../containers/event-modal/EventModal.container';
 import SideBar from '../containers/side-bar/Sidebar.container';
-import TodaysEvents from '../components/todays-events/TodaysEvents.component';
+import TodaysEvents from '../containers/todays-events/TodaysEvent.container';
 import Header from '../components/header/Header.component';
-import MoreEvents from '../components/more-events/MoreEvents.component';
+import MoreEvents from '../containers/more-events/MoreEvents.container';
 
 
-const Dashboard = () => {
+const DashboardPage = ( { eventModalOpen } ) => {
     return (
         <>
             <SideBar />
             <div className="main-content">
                 <Header />
-                <EventModal />
+                {eventModalOpen && <EventModal />}
                 <TodaysEvents />    
                 <MoreEvents />
             </div>
@@ -20,4 +20,4 @@ const Dashboard = () => {
     )
 };
 
-export default Dashboard;
+export default DashboardPage;

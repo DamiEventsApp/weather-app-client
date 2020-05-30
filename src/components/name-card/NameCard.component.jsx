@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes, { objectOf } from 'prop-types';
+import PropTypes from 'prop-types';
 import './name-card.styles.scss';
 
 const NameCard = ( { userName, userImage } ) => {
@@ -11,7 +11,7 @@ const NameCard = ( { userName, userImage } ) => {
     return (
         <div className="name-card row">
             <div className="user-image" style={userImageStyle}/>
-            <p className="user-name">userName</p>
+            <p className="user-name">{userName}</p>
         </div>
     )
 };

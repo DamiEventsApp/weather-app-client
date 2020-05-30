@@ -1,7 +1,6 @@
 import React from 'react';
-import PropTypes, { objectOf } from 'prop-types';
-import SearchBar from '../search-bar/SearchBar.component';
-import NameCard from '../name-card/NameCard.component';
+import SearchBar from '../../containers/search-bar/SearchBar.container';
+import NameCard from '../../containers/name-card/NameCard.container';
 import './header.styles.scss';
 
 const Header = ( { userName } ) => {

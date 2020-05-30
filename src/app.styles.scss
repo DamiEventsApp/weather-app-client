@@ -1,3 +1,5 @@
+@import './component';
+
 div.app-container {
     align-items: flex-start;
     width: 100%;
@@ -10,3 +12,59 @@ div.app-container {
         overflow-y: scroll;
     }
 }
+div.app-container {
+.search-results-holder {
+    width: 100%;
+    
+    .header {
+        justify-content: flex-end;
+        padding: 1em;
+
+        .search-holder {
+            display: none;
+        }
+    }
+    .search-results {
+        width: 100%;
+        justify-content: flex-start;
+        align-items: center;
+
+        .search-holder {
+            width: 40%;
+            align-items: flex-start;
+
+            .search-bar {
+                width: 100%;
+                justify-content: center;
+    
+            }
+        }
+
+        .event-list {
+            width: 100%;
+        }
+    }
+
+        .main-content {
+            width: 100%;
+            height: 60vh;
+            justify-content: flex-start;
+            align-items: center;
+            display: flex;
+            flex-flow: column nowrap;
+        }
+    }
+}
+
+.events-heading {
+    font-family: $secondary-font;
+}
+
+.react-datepicker-wrapper {
+    width: 100%;
+}
+
+.react-datepicker__input-container,
+.react-datepicker__input-container input {
+    width: 100%;
+}  

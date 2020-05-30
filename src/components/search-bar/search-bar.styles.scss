@@ -1,28 +1,49 @@
 @import '../../component';
 
-div.search-bar {
-    width: 100%;
-    align-items: flex-end;
-    input {
-        border: none;
-        border-bottom: 1px solid rgb(196, 196, 196);
-        width: 40%;
-        padding-bottom: 1em;
+.search-holder {
+    width: 40%; 
+    div.search-bar {
+        width: 100%;
+        align-items: flex-end;
+        z-index: 9999;
+    
+        .search-input {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid rgb(196, 196, 196);
+            padding-bottom: 1em;
+        }
+        
+        input {
+            width: 100%;
+            padding: .6em;
+            border: .5px solid $primary-color;
+        }
+    
+        button {
+            padding: .5em 1em;
+            margin-left: .5em;
+            border: none;
+            background-color: $primary-color;
+            border-radius: 5px;
+            color: white;
+        }
+    
+        .header-search-icon {
+            background-color: rgba(197, 197, 197, 0.603);
+            padding: .5em;
+            border-radius: 5px;
+            margin-left: .5em;
+        }
+    
     }
-
-    button {
-        padding: .5em 1em;
-        margin-left: .5em;
-        border: none;
-        background-color: $primary-color;
-        border-radius: 5px;
-        color: white;
-    }
-
-    .header-search-icon {
-        background-color: rgba(197, 197, 197, 0.603);
-        padding: .5em;
-        border-radius: 5px;
-        margin-left: .5em;
+    .checkbox-holder {
+        margin-top: .5em;
+        align-items: center;
+        
+        .search-type {
+            font-size: .8em;
+            margin-left: .5em;
+        }
     }
 }
