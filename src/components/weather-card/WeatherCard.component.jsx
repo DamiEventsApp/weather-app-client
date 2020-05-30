@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { weatherAPI } from '../../actions/weather.actions';
+import { locationAPI, API_KEY } from '../../actions/location.actions';
 import './weather-card.styles.scss';
-import { getLocation } from '../../actions/location.actions';
 
 const WeatherCard = () => {
-    let  [ weatherInfo, setWeatherInfo ] = useState("")
-    let  [ weatherIcon, setWeatherIcon ] = useState("")
-    let location;
-    if (!location) {
-        getLocation();
-    }
+    let  [ weatherInfo, setWeatherInfo ] = useState("");
+    let  [ weatherIcon, setWeatherIcon ] = useState("");
+    let  [ position, setPosition ] = useState({long: 40.4637, lat: 3.7492});
+    let [countryLocation, setCountryLocation] = useState("");
+
     const formatDate = () => {
         let dateToday = new Date().toDateString();
         dateToday = dateToday.split(' ');
@@ -17,27 +16,45 @@ const WeatherCard = () => {
         return dateToday.join(' ');
     };
 
+    const getLocationData = async() => {
+        const { long, lat } = position;
+        let locationResult = await locationAPI.get(`/json?latlng=${lat},${long}&key=${API_KEY}`);
+        const {data} = locationResult;
+        const {results} = data;
+        const countryData = results[4];
+        const country = countryData.formatted_address;
+        setCountryLocation(country);
+    }
+
     let dateToday = formatDate();
 
     useEffect(() => {
         const fetchData = async() => {
-            const res = await weatherAPI.get("/weather", {params: {q: location}});
-            const { data } = res;
-            const { weather } = data;
-            const [ weatherData ] = weather;
-            const { description, icon } = weatherData;
-            console.log(description, icon)
-            setWeatherInfo(description)
-            setWeatherIcon(icon)
+            await getLocationData()
+            console.log(countryLocation)
+            if (countryLocation) {
+                const weatherResult = await weatherAPI.get("/weather", {params: {q: "kenya"}});
+                console.log(weatherResult)
+                const { data } = weatherResult;
+                const { weather } = data;
+                const [ weatherData ] = weather;
+                const { description, icon } = weatherData;
+                console.log(description, icon)
+                setWeatherInfo(description)
+                setWeatherIcon(icon)
+            }
+
         }
+
         fetchData();
-    },[])
+    }, [countryLocation])
 
     return (
         <div className="weather-card column">
             <img src={`http://openweathermap.org/img/w/${weatherIcon}.png`} alt="weather-icon"/>
             <h3>{dateToday}</h3>
-            <h4>{weatherInfo}</h4>
+            <h4>{countryLocation}</h4>
+            <h5>{weatherInfo}</h5>
         </div>
     )
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons'
@@ -27,5 +28,23 @@ const PaginationControls = ({ prev, next, fetchData, today, search, authToken })
         </div>
     )
 };
+
+PaginationControls.defaultProps = {
+    next: "",
+    prev: "",
+    fetchData: () => {},
+    today: false,
+    search: false,
+    authToken: "",
+}
+
+PaginationControls.propTypes = {
+    next: PropTypes.string,
+    prev: PropTypes.string,
+    fetchData: PropTypes.func,
+    today: PropTypes.bool,
+    search: PropTypes.bool,
+    authToken: PropTypes.string,
+}
 
 export default PaginationControls;

@@ -13,12 +13,10 @@ const Button = ({ buttonAction, children, className, ...props }) => {
 
 Button.defaultProps = {
     buttonAction: () => {},
-    children: "",
 }
 
 Button.propTypes = {
     buttonAction: PropTypes.func,
-    children: PropTypes.string,
 }
 
 export default Button;

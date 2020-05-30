@@ -1,7 +1,6 @@
 import { deleteEvent, toggleEventModal, setCurrentEvent } from "../../actions/events/events.actions";
 import { connect } from "react-redux";
 import EventCard from "../../components/event-card/EventCard.component";
-import { getWeather } from "../../actions/weather.actions";
 
 const mapStateToProps = state => ({
     authToken: state.authReducer.authToken,

@@ -17,11 +17,15 @@ const TodaysEvents = ( { events, pagination, fetchEvents } ) => {
 TodaysEvents.defaultProps = {
     fetchEvents: () => {},
     events: [],
+    pagination: {},
+
 };
 
 TodaysEvents.propTypes = {
     fetchEvents: PropTypes.func,
-    events: PropTypes.arrayOf(objectOf(PropTypes.string))
+    events: PropTypes.array,
+    pagination: PropTypes.object,
+
 }
 
 export default TodaysEvents;
