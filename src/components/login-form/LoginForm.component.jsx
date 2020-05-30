@@ -8,6 +8,7 @@ import Logo from '../logo/Logo.component';
 const LoginForm = ({ login }) => {
     let [ email, setEmail ] = useState("")
     let [ password, setPassword ] = useState("")
+    let [buttonEnabled, setButtonEnabled] = useState(false);
 
     const handleChange = e => {
         const value = e.target.value;
@@ -17,21 +18,29 @@ const LoginForm = ({ login }) => {
             return;
         }
 
+
         setPassword(value);
+    }
+
+    const checkButtonState = () => {
+        return email && password
     }
 
     const handleLogin = e => {
         e.preventDefault();
-        const form = new FormData();
-        form.set('email', email);
-        form.set('password', password);
-        login(form);
-        resetForm();
+        if(checkButtonState()){
+            const form = new FormData();
+            form.set('email', email);
+            form.set('password', password);
+            login(form);
+            resetForm();
+        }
     }
 
     const resetForm = () => {
         setEmail("");
         setPassword("");
+        setButtonEnabled(false);
     }
     
     return (
@@ -45,7 +54,7 @@ const LoginForm = ({ login }) => {
                     <Input type="password" placeholder="Password" className="login-input" id="password" value={password} handleChange={handleChange}/>
                 </div>
                 <div className="login-form-element">
-                    <Button className="login-input" buttonAction={handleLogin}>Login</Button>
+                    <Button disabled={buttonEnabled} className="login-input" buttonAction={handleLogin}>Login</Button>
                 </div>
             </form>
         </div>
