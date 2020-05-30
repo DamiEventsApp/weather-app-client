@@ -1,6 +1,5 @@
 # Dami Event
-
-Dami Event
+It's an event management app
 
 # Demo Login
 * Email - john@doe.com
