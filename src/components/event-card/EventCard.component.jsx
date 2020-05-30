@@ -71,7 +71,7 @@ const EventCard = ({ event, setCurrentEvent,
 };
 
 EventCard.defaultProps = {
-    event: [],
+    event: {},
     deleteEvent: () => {},
     setCurrentEvent: () => {},
     toggleEventModal: () => {},
