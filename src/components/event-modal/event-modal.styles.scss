@@ -1,7 +1,6 @@
 @import '../../component';
 
 div.event-modal {
-    display: none;
     z-index: 9999;
     position: absolute;
     top: 0;
@@ -9,14 +8,19 @@ div.event-modal {
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.404);
+    flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
     width: 100%;
-
+    
+    &.closed {
+        display: none;
+    }
+    
     &.open {
         display: flex;
     }
-
+    
     .event-form {
         background-color: white;
         width: 25%;
@@ -25,7 +29,8 @@ div.event-modal {
         align-items: center;
         justify-content: center;
         position: relative;
-
+        padding: 0 3em;
+        
         .close-icon {
             position: absolute;
             top: 2em;
@@ -49,21 +54,12 @@ div.event-modal {
 
         input {
             padding: 1em;
-            width: 80%;
+            width: 100%;
             margin-bottom: 1em;
         }
 
-        .react-datepicker-wrapper {
-            width: 80%;
-        }
-
-        .react-datepicker__input-container,
-        .react-datepicker__input-container input {
-            width: 100%;
-        }  
-
         .button-holder {
-            width: 80%;
+            width: 100%;
         }
     }
 }

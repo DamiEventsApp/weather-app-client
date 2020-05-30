@@ -1,3 +1,5 @@
+@import '../../component';
+
 .event-card {
     border-radius: 1em;
     width: 25%;
@@ -7,38 +9,62 @@
     
     .cover-image {
         width: 100%;
-        height: 130px;
+        height: 200px;
         border-radius: 15px;
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
         position: relative;
 
-        .time {
+        .location {
+            justify-content: center;
             position: absolute;
             bottom: 0;
+            align-items: center;
             right: 0;
-            border-radius: 15px;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
             text-align: center;
             padding: 1em;
             background-color: white;
-            width: 50%;
-            height: 40%;
+            width: 100%;
+            height: 35%;
+            font-size: .8em;
+
+            .location-icon {
+                color: $primary-color;
+                margin-right: 1em;
+            }
         }
     }
     
     .overlay {
-            .button-holder {
-                .button {
-                    border: none;
-                    padding: 1em;
-                    // background-color: rgb(43, 116, 226);
-                }
-            }
+        justify-content: center;
 
-            .delete-btn {
-                background-color: rgb(226, 70, 43);
+        button {
+            border: none;
+            padding: .5em;
+            margin-right: .5em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: .5s;
+
+            &:hover {
+                background-color: grey;
             }
+        }
+        
+        .button-holder {
+            .button {
+                border: none;
+                padding: 1em;
+            }
+        }
+        
+        .delete-btn {
+            background-color: rgb(184, 65, 44);
+            color: white;
+        }
     }
 
     .event-details {

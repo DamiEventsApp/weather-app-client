@@ -1,8 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Dashboard from './pages/Dashboard';
-import Login from './pages/Login';
+import DashboardPage from './containers/pages/DashboardPage';
+import LoginPage from './pages/Login';
+import SearchResultsPage from './containers/pages/SearchResultsPage';
 import './app.styles.scss';
 
 const App = ({ loggedIn }) => {
@@ -10,8 +11,9 @@ const App = ({ loggedIn }) => {
         <Router>
             <div className="app-container row">
                 <Switch>
-                    <Route path="/" component={ loggedIn ? Dashboard : Login }/>
-                    <Route path="/login" component={loggedIn ? Dashboard : Login }/>
+                    <Route exact path="/" component={ loggedIn ? DashboardPage : LoginPage }/>
+                    <Route exact path="/search" component={ loggedIn ? SearchResultsPage : LoginPage }/>
+                    <Route exact path="/login" component={loggedIn ? DashboardPage : LoginPage }/>
                 </Switch>
             </div>
         </Router>

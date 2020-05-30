@@ -1,33 +1,72 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Input from '../input/Input.component';
-import Button from '../button/Button.component';
 import './search-bar.styles.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { withRouter } from 'react-router-dom';
+import ReactDatePicker from 'react-datepicker';
 
-const SearchBar = ({ searchEvents }) => {
-    let [searchTerm, setSearchTerm] = useState('')
-    const handleChange = (e) => {
+const SearchBar = ({ searchEvents, history, authToken, clearSearchResults }) => {
+    let [searchTerm, setSearchTerm] = useState('');
+    let [eventDate, setEventDate] = useState(new Date());
+    let [searchByTerm, setSearchByTerm] = useState(true);
+
+    const handleChange = e => {
         const term = e.target.value;
         setSearchTerm(term);
+    };
+
+    const handleDateChange = date => {
+        setEventDate(date);
+    };
+
+    const handleCheckBox = e => {
+        setSearchByTerm(e.target.checked)
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = e => {
         e.preventDefault();
-        searchEvents(searchTerm);
+        clearSearchResults();
+        const form = new FormData();
+
+        if (searchByTerm === true) {
+            form.set('term', searchTerm);
+        } else {
+            eventDate = eventDate.toISOString().split("T")[0];
+            form.set('date', eventDate);
+        }
+        
+        searchEvents(authToken, form);
+        history.push('/search');
+        clearInputs();
+    };
+
+    const clearInputs = () => {
+        setSearchTerm("");
+        setEventDate(new Date());
     }
 
     return (
-        <div className="search-bar row">
-            <Input 
-                value={searchTerm}
-                handleChange={handleChange}
-                placeholder={"What event are you looking for?"}
-                id="search-bar"
-            />
-            <div className="header-search-icon">
-                <FontAwesomeIcon icon={faSearch} />
+        <div className="search-holder column">
+            <div className="search-bar row">
+                { searchByTerm ? 
+                        <Input 
+                            value={searchTerm}
+                            handleChange={handleChange}
+                            placeholder={"Can't find what you are looking for? Try today or yesterday or tomorrow ..."}
+                            id="search-bar"
+                            className="search-input"
+                        /> 
+                    : <ReactDatePicker selected={eventDate} onChange={handleDateChange}/>
+                }
+                <div className="header-search-icon" onClick={handleSubmit}>
+                    <FontAwesomeIcon icon={faSearch} />
+                </div>
+            </div>
+            <div className="checkbox-holder row">
+                <input type="checkbox" onChange={handleCheckBox} checked={searchByTerm}/>
+                {searchByTerm ? <span className="search-type">Search by Term?</span> : <span className="search-type">Search by Date?</span>}
             </div>
         </div>
     )
@@ -35,10 +74,14 @@ const SearchBar = ({ searchEvents }) => {
 
 SearchBar.defaultProps = {
     searchEvents: PropTypes.func,
-}
+    clearSearchResults: PropTypes.func,
+    authToken: PropTypes.string,
+};
 
 SearchBar.defaultProps = {
     searchEvents: () => {},
-}
+    clearSearchResults: () => {},
+    authToken: "",
+};
 
-export default SearchBar;
+export default withRouter(SearchBar);

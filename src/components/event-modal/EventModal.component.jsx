@@ -7,18 +7,20 @@ import PropTypes from 'prop-types';
 import './event-modal.styles.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
+import { withRouter } from 'react-router-dom';
 
-const EventModal = ( { action, currentEvent, updateEvent, createNewEvent } ) => {
-    let [eventTitle, setEventTitle] = useState("");
-    let [eventDate, setEventDate] = useState(new Date());
-    let [eventEpoch, setEventEpoch] = useState(0);
+const EventModal = ( { action, removeCurrentEvent,currentEvent, updateEvent, createNewEvent, 
+                        eventModalOpen, toggleEventModal, authToken, history } ) => {
 
-    if (currentEvent) {
-        eventDate = currentEvent.date; 
-    }; 
-        
-    // handle changes to the form
-    const handleChange = (e) => {
+    const initialTitleState = currentEvent ? currentEvent.title : ""
+    const initialLocationState = currentEvent ? currentEvent.location : ""
+    const initialDateState = currentEvent ? new Date(currentEvent.date) : new Date();
+    
+    let [eventTitle, setEventTitle] = useState(initialTitleState);
+    let [eventLocation, setEventLocation] = useState(initialLocationState);
+    let [eventDate, setEventDate] = useState(initialDateState);
+    
+    const handleChange = e => {
         const value = e.target.value;
 
         if (e.target.id === "title") {
@@ -26,43 +28,65 @@ const EventModal = ( { action, currentEvent, updateEvent, createNewEvent } ) => 
             return;
         }
 
-        setEventDate(value);
+        if (e.target.id === "location") {
+            setEventLocation(value);
+            return;
+        }
     };
 
-    // handle changes to the date
+    const handleModalState = () => {
+        if (currentEvent) {
+            removeCurrentEvent();
+        }
+        toggleEventModal();
+    }
+
     const handleDateChange = date => {
         setEventDate(date);
-        setEventEpoch(date.getTime()/1000)
     };
 
     const setDateToToday = (e) => {
         e.preventDefault();
-        const epoch = Date.now()
-        let date = new Date(epoch);
+        let date = new Date();
         handleDateChange(date);
-        setEventEpoch(epoch);
     }
 
-    // handle submission
+    const resetForm = () => {
+        setEventTitle("");
+        setEventLocation("");
+        setEventDate(new Date());
+    }
+
     const handleSubmit = () => {
         const form = new FormData();
+        eventDate = eventDate.toISOString().split("T")[0];
+        form.set('title', eventTitle);
+        form.set('location', eventLocation);
+        form.append('date', eventDate);
+
         if (currentEvent) {
-            updateEvent(form);
-            return;
+            form.append('id', currentEvent.id)
+            updateEvent(form, authToken);
+        } else {
+            createNewEvent(form, authToken);
         }
-        createNewEvent(form);
+
+        toggleEventModal();
+        resetForm();
+        history.push('/');
     };
 
     return (
-        <div className="event-modal column">
+        <div className={`event-modal column ${eventModalOpen ? "open" : "closed"}`}>
             <div className="event-form column">
-                <div className="close-icon">
+                <div className="close-icon" onClick={handleModalState}>
                     <FontAwesomeIcon icon={faTimes} />
                 </div>
-                <Input id="title" className="modal-input" placeholder="Event Title" value={currentEvent ? currentEvent.title : eventTitle} onChange={handleChange} />
+                <Input id="title" className="modal-input" placeholder="Event Title" value={eventTitle} handleChange={handleChange} />
+                <Input id="location" className="modal-input" placeholder="Event Location" value={eventLocation} handleChange={handleChange} />
                 <DatePicker selected={eventDate} onChange={handleDateChange}/>
                 <Button buttonAction={setDateToToday} className="event-modal-btn">Use Today's Date</Button>
-                <Button buttonAction={handleSubmit} className="event-modal-btn">SUBMIT</Button>
+                <Button buttonAction={handleSubmit} className="today-btn event-modal-btn">SUBMIT</Button>
             </div>
         </div>
     )
@@ -70,17 +94,24 @@ const EventModal = ( { action, currentEvent, updateEvent, createNewEvent } ) => 
 
 EventModal.defaultProps = {
     currentEvent: PropTypes.objectOf(PropTypes.string),
+    authToken: PropTypes.objectOf(PropTypes.string),
     createNewEvent: PropTypes.func,
     updateEvent: PropTypes.func,
-    action: "",
+    removeCurrentEvent: PropTypes.func,
+    toggleEventModal: PropTypes.func,
+    eventModalOpen: PropTypes.bool,
 }
 
 EventModal.defaultProps = {
-    currentEvent: null,
+    currentEvent: {},
     createNewEvent: () => {},
     updateEvent: () => {},
+    removeCurrentEvent: () => {},
+    toggleEventModal: () => {},
     action: PropTypes.string,
+    eventModalOpen: false,
+    authToken: "",
 }
 
 
-export default EventModal;
+export default withRouter(EventModal);

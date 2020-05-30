@@ -1,37 +1,29 @@
-import React, { useEffect, useState } from 'react';
-import EventCard from '../event-card/EventCard.component';
+import React, { useEffect } from 'react';
+import EventCard from '../../containers/event-card/EventCard.container';
 import PropTypes, { objectOf } from 'prop-types';
 import Button from '../button/Button.component';
 import './event-list.styles.scss';
 
-const EventList = ({events, fetchEvents, openEventModal, today }) => {
-    let [filteredEvents, setFilteredEvents] = useState(events);
-
+const EventList = ({events, fetchEvents, toggleEventModal, today, authToken }) => {
     useEffect(() => {
         const fetchData = async() => {
-            fetchEvents();
+            fetchEvents(authToken, today);
         }
         fetchData();
-    }, [fetchEvents])
-
-    const filterEvents = id => {
-        let newfilteredEvents = filteredEvents.filter(event => event.id !== id);
-        setFilteredEvents(newfilteredEvents)
-    };
+    }, [])
 
     return (
         <div className="event-list">
             {
-                filteredEvents.length ? 
+                events.length ? 
                 <div className="filled-list">
                     <div className="events row">
-                        {filteredEvents.map((event, index) => <EventCard key={index} index={index} event={event} today={today} />)} 
+                        {events.map((event, index) => index < 4 ? <EventCard key={index} index={index} event={event} today={today} /> : "")} 
                     </div>
-                    {today ? "" : <Button>Next</Button>}
                 </div> :
-                <div className="empty-event-list">
-                    <Button buttonAction={openEventModal}>New Event</Button>
+                <div className="empty-event-list column">
                     <h3>No events here yet! Make some?</h3>
+                    { <Button className="empty-event-btn" buttonAction={toggleEventModal}>New Event</Button> }
                 </div>
             }
         </div>
@@ -40,11 +32,13 @@ const EventList = ({events, fetchEvents, openEventModal, today }) => {
 
 EventList.defaultProps = {
     fetchEvents: PropTypes.func,
+    toggleEventModal: PropTypes.func,
     events: PropTypes.arrayOf(objectOf(PropTypes.string)),
 };
 
 EventList.defaultProps = {
     fetchEvents: () => {},
+    toggleEventModal: () => {},
     events: [],
 };
 
