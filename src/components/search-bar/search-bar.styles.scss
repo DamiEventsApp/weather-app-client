@@ -1,14 +1,19 @@
 @import '../../component';
 
 .search-holder {
-    width: 40%; 
+    width: 100%; 
+  
+
+    @media #{$large-mq} {
+        width: 40%;
+    }
     div.search-bar {
         width: 100%;
         align-items: flex-end;
-        z-index: 9999;
+        z-index: 9998;
     
         .search-input {
-            width: 100%;
+            width: 85%;
             border: none;
             border-bottom: 1px solid rgb(196, 196, 196);
             padding-bottom: 1em;

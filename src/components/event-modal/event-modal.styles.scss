@@ -23,13 +23,17 @@ div.event-modal {
     
     .event-form {
         background-color: white;
-        width: 25%;
         height: 400px;
         border-radius: 10px;
         align-items: center;
         justify-content: center;
         position: relative;
         padding: 0 3em;
+        width: 90%; 
+
+        @media #{$large-mq} {
+            width: 40%;
+        }
         
         .close-icon {
             position: absolute;

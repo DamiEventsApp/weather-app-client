@@ -8,12 +8,12 @@ div.side-bar {
     text-align: left;
     
     @media #{$medium-mq} {
-        width: 50%;
+        width: 30%;
         display: flex;
     }
 
     @media #{$large-mq} {
-        width: 19%;
+        width: 18%;
     }
     
     .logo-holder {

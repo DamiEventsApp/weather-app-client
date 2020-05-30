@@ -5,11 +5,19 @@ div.app-container {
     width: 100%;
     
     .main-content {
-        width: 82%;
         padding: 1em;
         height: 100vh;
         overflow: hidden;
         overflow-y: scroll;
+        width: 100%;
+        
+        @media #{$medium-mq} {
+            width: 70%;
+        }    
+
+        @media #{$large-mq} {
+            width: 82%;
+        }    
     }
 }
 div.app-container {
@@ -30,8 +38,13 @@ div.app-container {
         align-items: center;
 
         .search-holder {
-            width: 40%;
+            width: 100%; 
             align-items: flex-start;
+  
+
+            @media #{$large-mq} {
+                width: 40%;
+            }
 
             .search-bar {
                 width: 100%;

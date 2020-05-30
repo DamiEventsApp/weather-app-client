@@ -1,4 +1,14 @@
-.header {
+@import '../../component';
+
+div.header {
     width: 100%;
     margin-bottom: 3em;
+    flex-flow: column;
+    @media #{$medium-mq} {
+        width: 100%;
+    }
+
+    @media #{$large-mq} {
+        flex-flow: row;
+    }
 }
