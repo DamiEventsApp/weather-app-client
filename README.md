@@ -18,7 +18,7 @@ It is an event management app
 
 ## Live Demo
 
-[Live Demo](https://eventor.herokuapp.com)
+[Live Demo](https://eventor-dami.herokuapp.com)
 
 ## Getting Started
 
