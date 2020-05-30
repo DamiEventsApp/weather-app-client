@@ -31,7 +31,6 @@ const WeatherCard = () => {
     useEffect(() => {
         const fetchData = async() => {
             await getLocationData()
-            console.log(countryLocation)
             if (countryLocation) {
                 const weatherResult = await weatherAPI.get("/weather", {params: {q: "kenya"}});
                 console.log(weatherResult)
@@ -39,7 +38,6 @@ const WeatherCard = () => {
                 const { weather } = data;
                 const [ weatherData ] = weather;
                 const { description, icon } = weatherData;
-                console.log(description, icon)
                 setWeatherInfo(description)
                 setWeatherIcon(icon)
             }

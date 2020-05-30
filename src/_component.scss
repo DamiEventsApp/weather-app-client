@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Muli:wght@300&family=PT+Sans&display=swap');
 
+$medium-bp: 768px;
+$large-bp: 1024px;
+
+$medium-mq: "(min-width: #{$medium-bp})";
+$large-mq: "(min-width: #{$large-bp})";
+
 $primary-color: #6265F7;
 
 $primary-font: 'Muli', sans-serif;

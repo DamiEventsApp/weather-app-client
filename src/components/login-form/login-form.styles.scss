@@ -16,7 +16,11 @@
     }
 
     form {
-        width: 40%;
+        width: 90%;
+
+        @media #{$medium-mq} {
+            width: 60%;
+        }
     }
 
     .login-form-element {
