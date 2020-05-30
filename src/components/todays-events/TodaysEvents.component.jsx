@@ -23,7 +23,7 @@ TodaysEvents.defaultProps = {
 
 TodaysEvents.propTypes = {
     fetchEvents: PropTypes.func,
-    events: PropTypes.arrayOf(objectOf(PropTypes.string)),
+    events: PropTypes.array,
     pagination: PropTypes.object,
 
 }

@@ -20,6 +20,7 @@ const EventModal = ( { action, removeCurrentEvent,currentEvent, updateEvent, cre
     let [eventLocation, setEventLocation] = useState(initialLocationState);
     let [eventDate, setEventDate] = useState(initialDateState);
     
+    // handle changes to the form
     const handleChange = e => {
         const value = e.target.value;
 
@@ -41,6 +42,7 @@ const EventModal = ( { action, removeCurrentEvent,currentEvent, updateEvent, cre
         toggleEventModal();
     }
 
+    // handle changes to the date
     const handleDateChange = date => {
         setEventDate(date);
     };
@@ -57,6 +59,7 @@ const EventModal = ( { action, removeCurrentEvent,currentEvent, updateEvent, cre
         setEventDate(new Date());
     }
 
+    // handle submission
     const handleSubmit = () => {
         const form = new FormData();
         eventDate = eventDate.toISOString().split("T")[0];
@@ -103,7 +106,7 @@ EventModal.defaultProps = {
 }
 
 EventModal.defaultProps = {
-    currentEvent: {},
+    currentEvent: null,
     createNewEvent: () => {},
     updateEvent: () => {},
     removeCurrentEvent: () => {},

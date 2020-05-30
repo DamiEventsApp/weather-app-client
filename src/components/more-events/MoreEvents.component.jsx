@@ -22,7 +22,7 @@ MoreEvents.defaultProps = {
 };
 
 MoreEvents.propTypes = {
-    events: PropTypes.arrayOf(objectOf(PropTypes.string)),
+    events: PropTypes.array,
     pagination: PropTypes.object,
     fetchEvents: PropTypes.func,
 }
