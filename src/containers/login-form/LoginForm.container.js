@@ -6,4 +6,8 @@ const mapDispatchToProps = dispatch => ({
     login: (form) => dispatch(login(form)),
 });
 
-export default connect(null, mapDispatchToProps)(LoginForm);
+const mapStateToProps = state => ({
+    isLoading: state.processingReducer.login,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

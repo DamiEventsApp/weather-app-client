@@ -1,0 +1,31 @@
+.loading {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 8888;
+    transition: .5s;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    display: none;
+
+    &.show {
+        display: flex;
+        .logo-holder {
+            animation: loading 1s ease-in-out 0s infinite forwards normal;
+        }
+    }
+}
+
+@keyframes loading {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

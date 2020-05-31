@@ -4,8 +4,9 @@ import Input from '../input/Input.component';
 import Button from '../button/Button.component';
 import './login-form.styles.scss';
 import Logo from '../logo/Logo.component';
+import Loading from '../loading/Loading.component';
 
-const LoginForm = ({ login }) => {
+const LoginForm = ({ login, isLoading }) => {
     let [ email, setEmail ] = useState("")
     let [ password, setPassword ] = useState("")
     let [buttonEnabled, setButtonEnabled] = useState(false);
@@ -45,6 +46,7 @@ const LoginForm = ({ login }) => {
     
     return (
         <div className="login-form column">
+            <Loading isLoading={isLoading}/>
             <Logo />
             <form>
                 <div className="login-form-element">
@@ -63,10 +65,12 @@ const LoginForm = ({ login }) => {
 
 LoginForm.defaultProps = {
     login: () => {},
+    isLoading: false,
 }
 
 LoginForm.propTypes = {
     login: PropTypes.func,
+    isLoading: PropTypes.bool,
 }
 
 export default LoginForm;
