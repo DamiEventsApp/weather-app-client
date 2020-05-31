@@ -12,12 +12,6 @@ const SideBar = ( { logout,
                     history, 
                     eventModalOpen, 
                     menuOpen, toggleMenu } ) => {
-    useEffect(() => {
-      if (menuOpen) {
-        toggleMenu();
-      }
-    },[menuOpen])                  
-
 
     const handleClick = () => {
       history.push('/search')
