@@ -1,11 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Input from '../Input.component.jsx';
+import FlashMessage from '../FlashMessage.component.jsx';
 import '../../../../setupTests.js';
 
-describe('Input', () => {
+describe('FlashMessage', () => {
     it('renders correctly', () => {
-        const wrapper = shallow(<Input />);
+        const wrapper = shallow(<FlashMessage />);
         expect(wrapper).toMatchSnapshot();
     });
 });
