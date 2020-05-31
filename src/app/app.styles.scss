@@ -25,51 +25,66 @@
 
       }
 
-    div.search-results-holder {
-        justify-content: flex-start;
-        align-items: center;
-        margin-top: 3.5em;
-        width: 100%;
-        
-        @media #{$large-mq} {
-            margin-top: 4em;
-            width: 82%;
-        }
-
-      .header {
-        .search-holder {
-          display: none;
-        }
-      }
+  div.search-results-holder {
+      justify-content: flex-start;
+      align-items: center;
+      margin-top: 3.5em;
+      width: 100%;
       
-      .main-content {
+      @media #{$large-mq} {
+          margin-top: 4em;
+          width: 82%;
+      }
+
+    .header {
+      .search-holder {
+        display: none;
+      }
+    }
+    
+    .main-content {
+      width: 100%;
+      align-items: center;
+      .search-results {
         width: 100%;
-        align-items: center;
-        .search-results {
+
+        .search-holder {
+          align-items: flex-start;
           width: 100%;
-  
-          .search-holder {
-            align-items: flex-start;
+          @media #{$medium-mq}{
+            width: 100%; 
+          }
+          .search-bar {
             width: 100%;
-            @media #{$medium-mq}{
-              width: 100%; 
-            }
-            .search-bar {
-              width: 100%;
-              .search-input{
-                width: 85%;
-                @media #{$large-mq} {
-                      width: 40%;
-                }
+            .search-input{
+              width: 60%;
+              @media #{$large-mq} {
+                    width: 40%;
               }
             }
           }
-            .event-list {
-                width: 100%;
+
+          .react-datepicker-wrapper {
+            width: 75%;
+            @media #{$large-mq} {
+              width: 40%;
             }
+          }
+        
+          .react-datepicker__input-container,
+          .react-datepicker__input-container input {
+              width: 100%;
+          }  
+          .react-datepicker__input-container input {
+            padding: .8em 0;
+          }  
+        }
+        .event-list {
+          width: 100%;
         }
       }
     }
+  }
             
 }
 
@@ -77,11 +92,3 @@
     font-family: $secondary-font;
 }
 
-.react-datepicker-wrapper {
-    width: 100%;
-}
-
-.react-datepicker__input-container,
-.react-datepicker__input-container input {
-    width: 100%;
-}  

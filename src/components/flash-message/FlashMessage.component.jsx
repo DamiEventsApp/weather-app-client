@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import './flash-message.styles.scss';
 
 const FlashMessage = ({ flashMessage }) => {
-    console.log(flashMessage)
     return (
       <div className={`flash-message ${flashMessage === "" ? "" : "show"}`}>
         <p>

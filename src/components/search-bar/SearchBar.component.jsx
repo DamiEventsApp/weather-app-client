@@ -10,33 +10,39 @@ import ReactDatePicker from 'react-datepicker';
 const SearchBar = ({ searchEvents, history, authToken, clearSearchResults }) => {
     let [searchTerm, setSearchTerm] = useState('');
     let [eventDate, setEventDate] = useState(new Date());
-    let [searchByTerm, setSearchByTerm] = useState(true);
+    let [searchBy, setSearchBy] = useState("term");
 
     const handleChange = e => {
         const term = e.target.value;
         setSearchTerm(term);
     };
 
-    const handleDateChange = date => {
+    
+    const handleDateChange = (date) => {
         setEventDate(date);
+        handleSubmit(false, date);
     };
-
-    const handleCheckBox = e => {
-        setSearchByTerm(e.target.checked)
+    
+    const handleSearchSelect = e => {
+        setSearchBy(e.target.value)
     }
-
-    const handleSubmit = e => {
-        e.preventDefault();
-        if (!searchTerm) return;
-
+    
+    const handleSubmit = (e, date) => {
+        if (e) {
+            e.preventDefault();
+        }
+        
+        if (!searchTerm && !eventDate) return;
+        
         clearSearchResults();
-
+        
         const form = new FormData();
-
-        if (searchByTerm === true) {
+        
+        if (searchBy === "term") {
             form.set('term', searchTerm);
         } else {
-            eventDate = eventDate.toISOString().split("T")[0];
+            date = date ? date : eventDate;
+            eventDate = date.toISOString().split("T")[0];
             form.set('date', eventDate);
         }
         
@@ -44,7 +50,7 @@ const SearchBar = ({ searchEvents, history, authToken, clearSearchResults }) => 
         history.push('/search');
         clearInputs();
     };
-
+    
     const clearInputs = () => {
         setSearchTerm("");
         setEventDate(new Date());
@@ -53,7 +59,13 @@ const SearchBar = ({ searchEvents, history, authToken, clearSearchResults }) => 
     return (
         <div className="search-holder column">
             <div className="search-bar row">
-                { searchByTerm ? 
+            <div className="select-holder row">
+                <select className="search-select" type="select" onChange={handleSearchSelect} value={searchBy}>
+                    <option value="term">By Term</option>
+                    <option value="date">By Date</option>
+                </select>
+            </div>
+                { searchBy === "term" ? 
                         <Input 
                             value={searchTerm}
                             handleChange={handleChange}
@@ -63,13 +75,9 @@ const SearchBar = ({ searchEvents, history, authToken, clearSearchResults }) => 
                         /> 
                     : <ReactDatePicker selected={eventDate} onChange={handleDateChange}/>
                 }
-                <div className="header-search-icon" onClick={handleSubmit}>
-                    <FontAwesomeIcon icon={faSearch} />
-                </div>
-            </div>
-            <div className="checkbox-holder row">
-                <input type="checkbox" onChange={handleCheckBox} checked={searchByTerm}/>
-                {searchByTerm ? <span className="search-type">Search by Term?</span> : <span className="search-type">Search by Date?</span>}
+                { searchBy === "term" ? <div className="header-search-icon" onClick={handleSubmit}>
+                    <FontAwesomeIcon icon={faSearch} /> 
+                </div> : "" }
             </div>
         </div>
     )
