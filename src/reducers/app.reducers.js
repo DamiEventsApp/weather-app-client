@@ -107,3 +107,19 @@ export const pageReducer = (state={}, action) => {
         }
     }
 };
+
+export const processingReducer = (state={}, action) => {
+    switch(action.type) {
+        case types.START_LOGIN: {
+            return Object.assign({}, state, { login: true })
+        }
+
+        case types.STOP_LOGIN: {
+            return Object.assign({}, state, { login: false })
+        }
+        
+        default: {
+            return state;
+        }
+    }
+};

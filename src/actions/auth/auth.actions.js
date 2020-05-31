@@ -7,13 +7,24 @@ const logUserIn = (user, authToken) => ({
     authToken,
 });
 
+const startLogin = () => ({
+    type: types.START_LOGIN,
+});
+
+const stopLogin = () => ({
+    type: types.STOP_LOGIN,
+});
+
 export const login = (form) => async(dispatch) => {
+    dispatch(startLogin());
     try {
         const res = await API.post('/auth/login', form)
         const { data } = res;
         const { user, auth_token } = data;
-        dispatch(logUserIn(user, auth_token))
+        dispatch(logUserIn(user, auth_token));
+        dispatch(stopLogin());
     } catch(error) {
+        dispatch(stopLogin());
         if (error.message === "Request failed with status code 401")
         dispatch(showMessage("Invalid Credentials"));
         setTimeout(() => {
