@@ -7,23 +7,27 @@ div.side-bar {
     text-align: left;
     position: absolute;
     left: -100%;
+    transition: .5s;
+    z-index: 9999;
 
     &.open-menu {
-        position: relative;
         left: 0;
-        width: 100%;
-        // animation: openMenu 250 linear 0s 1 forwards normal;
+        width: 50%;
+        animation: openMenu 250 linear 0s 1 forwards normal;
 
         @media #{$medium-mq} {
             width: 50%;
         }
 
-        .close-icon-holder {
-            position: absolute;
-            top: 1em;
-            right: 1em;
-        }
-    }
+      }
+      div.close-icon-holder {
+          position: absolute;
+          top: 1em;
+          right: 1em;
+            @media #{$large-mq} {
+              display: none;
+          }
+      }
     
     @media #{$large-mq} {
         display: flex;

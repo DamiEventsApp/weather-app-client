@@ -1,4 +1,5 @@
 import { types, API } from "../components";
+import { showMessage, hideMessage } from "../messages/messages.actions";
 
 const logUserIn = (user, authToken) => ({
     type: types.LOGIN,
@@ -13,7 +14,11 @@ export const login = (form) => async(dispatch) => {
         const { user, auth_token } = data;
         dispatch(logUserIn(user, auth_token))
     } catch(error) {
-        console.log(error)
+        if (error.message === "Request failed with status code 401")
+        dispatch(showMessage("Invalid Credentials"));
+        setTimeout(() => {
+          dispatch(hideMessage());
+        }, 1000);
     }
 };
 

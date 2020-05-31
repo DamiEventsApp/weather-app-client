@@ -1,14 +1,13 @@
 import React from 'react';
 import SearchResults from '../containers/search-results/SearchResults.container';
 import Header from '../containers/header/Header.container';
-import EventModal from '../containers/event-modal/EventModal.container';
 
-const SearchResultsPage = ({ eventModalOpen }) => {
+const SearchResultsPage = ({ eventModalOpen, toggleEventModal }) => {
+    if (eventModalOpen) toggleEventModal();
     return (
-        <div className="search-results-holder">
+        <div className="search-results-holder column">
             <Header />
-            <div className="main-content">
-                {eventModalOpen && <EventModal />}
+            <div className="main-content column">
                 <SearchResults />    
             </div>
         </div>

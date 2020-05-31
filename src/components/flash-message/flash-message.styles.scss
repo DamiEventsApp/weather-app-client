@@ -1,0 +1,14 @@
+.flash-message {
+  background-color: salmon;
+  z-index: 9999;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  color: white;
+  transition: .5s;
+  
+  &.show {
+    padding: .4em;
+  }
+}

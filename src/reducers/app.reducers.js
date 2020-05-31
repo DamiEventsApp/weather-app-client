@@ -10,6 +10,14 @@ export const sharedReducer = (state={}, action) => {
             return Object.assign({}, state, { menuOpen: !state.menuOpen })
         }
 
+        case types.SHOW_MESSAGE: {
+          return Object.assign({}, state, { flashMessage: action.message })
+        }
+
+        case types.HIDE_MESSAGE: {
+          return Object.assign({}, state, { flashMessage: undefined })
+        }
+
         default:{
             return state;
         }
