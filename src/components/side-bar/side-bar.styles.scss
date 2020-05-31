@@ -1,20 +1,14 @@
 @import '../../component';
 
 div.side-bar {
-  background-color: white;
-  height: 100vh;
-  align-items: flex-start;
-  text-align: left;
-  position: absolute;
-  left: -100%;
-  transition: .5s;
-  z-index: 9999;
-
-    @media #{$large-mq} {
-        display: flex;
-        width: 18%;
-        position: relative;
-    }
+    background-color: white;
+    height: 100vh;
+    align-items: flex-start;
+    text-align: left;
+    position: absolute;
+    left: -100%;
+    transition: .5s;
+    z-index: 9999;
 
     &.open-menu {
         left: 0;
@@ -35,6 +29,12 @@ div.side-bar {
           }
       }
     
+    @media #{$large-mq} {
+        display: flex;
+        width: 18%;
+        position: relative;
+        left: 0;
+    }
     
     .logo-holder {
         justify-content: flex-start;

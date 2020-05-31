@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -12,6 +12,12 @@ const SideBar = ( { logout,
                     history, 
                     eventModalOpen, 
                     menuOpen, toggleMenu } ) => {
+    useEffect(() => {
+      if (menuOpen) {
+        toggleMenu();
+      }
+    },[menuOpen])                  
+
 
     const handleClick = () => {
       history.push('/search')
