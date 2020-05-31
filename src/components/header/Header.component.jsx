@@ -5,10 +5,12 @@ import { faBars } from '@fortawesome/free-solid-svg-icons'
 import SearchBar from '../../containers/search-bar/SearchBar.container';
 import './header.styles.scss';
 import NewEventButton from '../new-event-button/NewEventButton.component';
+import Logo from '../logo/Logo.component';
 
 const Header = ({ toggleEventModal, toggleMenu }) => {
     return (
         <div className="header row">
+            <Logo />
             <div className="menu-icon-holder" onClick={toggleMenu}>
                 <FontAwesomeIcon icon={faBars} className="menu-icon"/>
             </div>

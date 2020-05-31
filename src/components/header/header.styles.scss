@@ -2,13 +2,18 @@
 
 div.header {
     width: 100%;
-    margin-bottom: 3em;
     position: absolute;
+    align-items: center;
     padding: 1em;
     top: 0;
     left: 0;
     right: 0;
     background-color: white;
+
+    .logo-holder {
+      display: none;
+    }
+    
     box-shadow: 0px 0px 4px 5px rgba(0, 0, 0, 0.102);
     .menu-icon {
         @media #{$large-mq} {
