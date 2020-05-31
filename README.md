@@ -6,8 +6,8 @@ It's an event management app
 * Password - guestuser
 
 # Upcoming Features
-* Animations for loading states
-* Flash messages for error and success messages
+* Sign up
+*Flash messages for events
 
 # What it does
 It is an event management app
