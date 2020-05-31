@@ -5,7 +5,6 @@ import MoreEvents from '../containers/more-events/MoreEvents.container';
 
 
 const DashboardPage = ( { menuOpen, toggleMenu } ) => {
-    
     return (
         <>
             <div className="main-content">
