@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useEffect, useCallback } from 'react';
 import SearchResults from '../containers/search-results/SearchResults.container';
 import Header from '../containers/header/Header.container';
 
-const SearchResultsPage = ({ eventModalOpen, toggleEventModal }) => {
-    if (eventModalOpen) toggleEventModal();
+const SearchResultsPage = ({ menuOpen, toggleMenu }) => {
+    const closeMenu = useCallback(() => {
+        if (menuOpen) toggleMenu();
+    }, [toggleMenu, menuOpen])
+    
+    useEffect(() => {
+        closeMenu();
+    },[closeMenu])
+
     return (
         <div className="search-results-holder column">
             <Header />

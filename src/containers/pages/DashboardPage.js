@@ -1,13 +1,13 @@
 import { connect } from "react-redux";
 import DashboardPage from "../../pages/Dashboard";
-import { toggleEventModal } from "../../actions/events/events.actions";
+import { toggleMenu } from "../../actions/shared/shared.actions";
 
 const mapStateToProps = state => ({
-    eventModalOpen: state.eventsReducer.eventModalOpen,
+    menuOpen: state.sharedReducer.menuOpen,
 });
 
 const mapDispatchToProps = dispatch => ({
-  toggleEventModal: () => dispatch(toggleEventModal()),
+  toggleMenu: () => dispatch(toggleMenu()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashboardPage);

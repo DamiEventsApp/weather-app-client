@@ -1,13 +1,13 @@
 import { connect } from "react-redux";
 import SearchResultsPage from "../../pages/SearchResults";
-import { toggleEventModal } from "../../actions/events/events.actions";
+import { toggleMenu } from "../../actions/shared/shared.actions";
 
 const mapStateToProps = state => ({
-    eventModalOpen: state.sharedReducer.eventModalOpen,
+    eventMenu: state.sharedReducer.menuOpen,
 });
 
 const mapDispatchToProps = dispatch => ({
-  toggleEventModal: () => dispatch(toggleEventModal()),
+  toggleMenu: () => dispatch(toggleMenu()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchResultsPage);
