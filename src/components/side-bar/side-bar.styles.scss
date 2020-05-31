@@ -5,7 +5,7 @@ div.side-bar {
     height: 100vh;
     align-items: flex-start;
     text-align: left;
-    position: absolute;
+    position: fixed;
     left: -100%;
     transition: .5s;
     z-index: 9999;
