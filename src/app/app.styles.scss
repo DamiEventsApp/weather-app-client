@@ -22,52 +22,27 @@
         @media #{$large-mq} {
             width: 82%;
         }    
-    }
-    .search-results-holder {
-        width: 100%;
-        height: 100vh;
-    
-        .header {
-            justify-content: flex-end;
-            padding: 1em;
 
-            .search-holder {
-                display: none;
-            }
-    }
-    .search-results {
-        width: 100%;
-        justify-content: flex-start;
-        align-items: center;
-
-        .search-holder {
-            width: 100%; 
-            align-items: flex-start;
-  
-
-            @media #{$large-mq} {
-                width: 40%;
-            }
-
-            .search-bar {
-                width: 100%;
-                justify-content: center;
-    
-            }
-        }
-
-        .event-list {
+        div.search-results-holder {
             width: 100%;
-        }
-    }
-
-        .main-content {
-            width: 100%;
-            height: 60vh;
             justify-content: flex-start;
             align-items: center;
-            display: flex;
-            flex-flow: column nowrap;
+
+                
+                .search-holder {
+                    width: 100%; 
+                    align-items: flex-start;
+    
+                    .search-bar {
+    
+                        div.search-input{
+                            width: 80%;
+                        }
+                    }
+                }
+            .event-list {
+                width: 100%;
+            }
         }
     }
 }

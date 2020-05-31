@@ -13,8 +13,6 @@ const SideBar = ( { logout,
                     eventModalOpen, 
                     menuOpen, toggleMenu } ) => {
 
-                      console.log(menuOpen)
-
     const handleClick = () => {
       history.push('/search')
       if (eventModalOpen) {

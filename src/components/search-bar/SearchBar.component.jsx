@@ -59,7 +59,7 @@ const SearchBar = ({ searchEvents, history, authToken, clearSearchResults }) => 
                             handleChange={handleChange}
                             placeholder={"Can't find what you are looking for? Try a location or title"}
                             type="text"
-                            className="search-input"
+                            className="search-input page-search-input"
                         /> 
                     : <ReactDatePicker selected={eventDate} onChange={handleDateChange}/>
                 }

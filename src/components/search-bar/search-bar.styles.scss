@@ -1,14 +1,13 @@
 @import '../../component';
 
 .search-holder {
-    width: 100%; 
   
 
     @media #{$large-mq} {
         width: 90%;
     }
     
-    div.search-bar {
+    .search-bar {
         width: 100%;
         align-items: flex-end;
         z-index: 9998;
@@ -17,7 +16,6 @@
             border: none;
             border-bottom: 1px solid rgb(196, 196, 196);
             padding-bottom: 1em;
-            width: 40%;
             
             &:hover {
                 cursor: text;

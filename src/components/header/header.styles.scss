@@ -18,9 +18,16 @@ div.header {
     
     .search-holder {
         display: none;
+        width: 90%;
+
+        .search-input {
+            width: 40%;
+        }
+        
         @media #{$large-mq} {
             display: flex;
         }
+
     }
 
     @media #{$medium-mq} {
