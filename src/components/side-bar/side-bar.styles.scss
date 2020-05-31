@@ -4,11 +4,11 @@ div.side-bar {
     background-color: white;
     height: 100vh;
     align-items: flex-start;
-    text-align: left;
-    position: fixed;
     left: -100%;
     transition: .5s;
     z-index: 9999;
+    text-align: left;
+    position: fixed;
 
     &.open-menu {
         left: 0;
@@ -18,16 +18,16 @@ div.side-bar {
         @media #{$medium-mq} {
             width: 50%;
         }
+    }
 
-      }
-      div.close-icon-holder {
-          position: absolute;
-          top: 1em;
-          right: 1em;
-            @media #{$large-mq} {
-              display: none;
-          }
-      }
+    div.close-icon-holder {
+        position: absolute;
+        top: 1em;
+        right: 1em;
+        @media #{$large-mq} {
+            display: none;
+        }
+    }
     
     @media #{$large-mq} {
         display: flex;

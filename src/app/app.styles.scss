@@ -26,25 +26,19 @@
       }
 
     div.search-results-holder {
-      width: 100%;
-      justify-content: flex-start;
-      align-items: center;
-      margin-top: 3em;
-
-      @media #{$large-mq} {
-        margin-top: 6.5em;
-      }
+        justify-content: flex-start;
+        align-items: center;
+        margin-top: 3.5em;
+        width: 100%;
+        
+        @media #{$large-mq} {
+            margin-top: 4em;
+            width: 82%;
+        }
 
       .header {
         .search-holder {
           display: none;
-        }
-
-        .logo-holder {
-          width: 10%;
-          @media #{$large-mq} {
-            display: inline;
-          }
         }
       }
       

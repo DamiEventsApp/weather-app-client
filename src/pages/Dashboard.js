@@ -1,12 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Header from '../containers/header/Header.container';
 import TodaysEvents from '../containers/todays-events/TodaysEvent.container';
 import MoreEvents from '../containers/more-events/MoreEvents.container';
 
 
 const DashboardPage = ( { eventModalOpen, toggleEventModal } ) => {
-    if (eventModalOpen) toggleEventModal();
-
     return (
         <>
             <div className="main-content">
