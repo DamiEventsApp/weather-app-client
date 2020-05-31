@@ -59,8 +59,15 @@ const EventModal = ( { action, removeCurrentEvent,currentEvent, updateEvent, cre
         setEventDate(new Date());
     }
 
+    const notValidEvent = () => {
+        if (eventDate !=="" && eventTitle !== "" && eventLocation !== "") return false;
+        return true;
+    }
+
     // handle submission
     const handleSubmit = () => {
+        if (notValidEvent()) return;
+
         const form = new FormData();
         eventDate = eventDate.toISOString().split("T")[0];
         form.set('title', eventTitle);
