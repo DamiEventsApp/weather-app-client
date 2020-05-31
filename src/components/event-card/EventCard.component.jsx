@@ -59,7 +59,8 @@ const EventCard = ({ event, setCurrentEvent,
                     }
                 </div> 
                 <div className="location row">
-                    <FontAwesomeIcon className="location-icon" icon={faMapMarkerAlt}/><p>{location}, {weatherInfo}</p>
+                    <FontAwesomeIcon className="location-icon" icon={faMapMarkerAlt}/>
+                    <p>{location}, {weatherInfo}</p>
                     <img src={`http://openweathermap.org/img/w/${weatherIcon}.png`} alt=""/>
                 </div>
             </div>
