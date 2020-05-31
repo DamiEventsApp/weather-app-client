@@ -1,3 +1,9 @@
+@import '../../component';
+
 .todays-events {
-  margin-top: 6em;
+  margin-top: 3em;
+  
+  @media #{$large-mq} {
+    margin-top: 6em;
+  }
 }

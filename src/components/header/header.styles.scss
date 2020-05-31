@@ -3,7 +3,6 @@
 div.header {
     width: 100%;
     margin-bottom: 3em;
-    flex-flow: column;
     position: absolute;
     padding: 1em;
     top: 0;
@@ -11,12 +10,25 @@ div.header {
     right: 0;
     background-color: white;
     box-shadow: 0px 0px 4px 5px rgba(0, 0, 0, 0.102);
+    .menu-icon {
+        @media #{$large-mq} {
+            display: none;
+        }
+    }
+    
+    .search-holder {
+        display: none;
+        @media #{$large-mq} {
+            display: flex;
+        }
+    }
 
     @media #{$medium-mq} {
         width: 100%;
     }
 
     @media #{$large-mq} {
-        flex-flow: row;
+        flex-flow: row nowrap;
+        justify-content: space-between;
     }
 }

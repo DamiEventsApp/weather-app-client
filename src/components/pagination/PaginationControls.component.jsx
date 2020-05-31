@@ -20,10 +20,10 @@ const PaginationControls = ({ prev, next, fetchData, today, search, authToken })
     return (
         <div className="pagination-controls row">
             <div className="left">
-                <Button onClick={handleClick} disabled={!prev} id="prev" className={`${prev ? "pagination-btn" : "disabled-btn"} btn prev`}><FontAwesomeIcon icon={faChevronLeft} /></Button>
+                <Button buttonAction={handleClick} disabled={!prev} id="prev" className={`${prev ? "pagination-btn" : "disabled-btn"} btn prev`}><FontAwesomeIcon icon={faChevronLeft} /></Button>
             </div>
             <div className="right">
-                <Button onClick={handleClick} disabled={!next} id="next" className={`${next ? "pagination-btn" : "disabled-btn"} btn next`}><FontAwesomeIcon icon={faChevronRight} /></Button>
+                <Button buttonAction={handleClick} disabled={!next} id="next" className={`${next ? "pagination-btn" : "disabled-btn"} btn next`}><FontAwesomeIcon icon={faChevronRight} /></Button>
             </div>
         </div>
     )

@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import DashboardPage from '../../containers/pages/DashboardPage';
-import LoginPage from '../../pages/Login';
-import SearchResultsPage from '../../containers/pages/SearchResultsPage';
+import DashboardPage from '../containers/pages/DashboardPage';
+import LoginPage from '../pages/Login';
+import SearchResultsPage from '../containers/pages/SearchResultsPage';
 import './app.styles.scss';
 
 const App = ({ loggedIn }) => {

@@ -1,0 +1,19 @@
+@import '../../component';
+
+div.new-event-btn {
+    display: none;
+
+    @media #{$large-mq} {
+        display: inline-block;
+    }
+
+    .new-btn {
+        padding: 1em;
+        border: none;
+        background-color: $primary-color;
+        border-radius: 5px;
+        color: white;
+    }
+
+    
+}

@@ -58,7 +58,6 @@ const SearchBar = ({ searchEvents, history, authToken, clearSearchResults }) => 
                             value={searchTerm}
                             handleChange={handleChange}
                             placeholder={"Can't find what you are looking for? Try a location or title"}
-                            id="search-bar"
                             type="text"
                             className="search-input"
                         /> 

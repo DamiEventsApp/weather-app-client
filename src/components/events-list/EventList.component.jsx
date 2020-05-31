@@ -1,16 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import EventCard from '../../containers/event-card/EventCard.container';
 import PropTypes, { objectOf } from 'prop-types';
 import Button from '../button/Button.component';
 import './event-list.styles.scss';
 
 const EventList = ({events, fetchEvents, toggleEventModal, today, authToken }) => {
+
+    const fetchData = useCallback(() => {
+        fetchEvents(authToken, today);
+    },[authToken, fetchEvents, today]);
+
     useEffect(() => {
-        const fetchData = async() => {
-            fetchEvents(authToken, today);
-        }
         fetchData();
-    })
+    },[fetchData])
 
     return (
         <div className="event-list">

@@ -5,21 +5,22 @@
   
 
     @media #{$large-mq} {
-        width: 40%;
+        width: 90%;
     }
+    
     div.search-bar {
         width: 100%;
         align-items: flex-end;
         z-index: 9998;
-    
+        
         .search-input {
-            width: 85%;
             border: none;
             border-bottom: 1px solid rgb(196, 196, 196);
             padding-bottom: 1em;
-
+            width: 40%;
+            
             &:hover {
-              cursor: text;
+                cursor: text;
             }
         }
         
@@ -28,21 +29,18 @@
             padding: .6em 0;
             border: .5px solid $primary-color;
         }
-    
-        button {
-            padding: .5em 1em;
-            margin-left: .5em;
-            border: none;
-            background-color: $primary-color;
-            border-radius: 5px;
-            color: white;
-        }
-    
+        
         .header-search-icon {
             background-color: rgba(197, 197, 197, 0.603);
             padding: .5em;
             border-radius: 5px;
             margin-left: .5em;
+            transition: .5s;
+
+            &:hover {
+                color: white;
+                background-color: $primary-color;
+            }
         }
     
     }

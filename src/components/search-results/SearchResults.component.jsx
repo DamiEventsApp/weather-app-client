@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes, { objectOf } from 'prop-types';
+import PropTypes from 'prop-types';
 import EventList from '../../containers/event-list/EventList.container';
 import './search-results.styles.scss';
 import SearchBarComponent from '../../containers/search-bar/SearchBar.container';
@@ -24,8 +24,9 @@ SearchResults.defaultProps = {
 };
 
 SearchResults.propTypes = {
-    events: PropTypes.arrayOf(objectOf(PropTypes.string)),
+    events: PropTypes.array,
     pagination: PropTypes.object,
+    fetchEvents: PropTypes.func,
 }
 
 export default SearchResults;

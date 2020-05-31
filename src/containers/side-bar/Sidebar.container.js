@@ -8,4 +8,8 @@ const mapDispatchToProps = dispatch => ({
     toggleEventModal: () => dispatch(toggleEventModal()),
 });
 
-export default connect(null, mapDispatchToProps)(SideBar);
+const mapStateToProps = state => ({
+    eventModalOpen: state.sharedReducer.eventModalOpen,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SideBar);

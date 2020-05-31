@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchResults from '../containers/search-results/SearchResults.container';
-import Header from '../components/header/Header.component';
+import Header from '../containers/header/Header.container';
 import EventModal from '../containers/event-modal/EventModal.container';
 
 const SearchResultsPage = ({ eventModalOpen }) => {

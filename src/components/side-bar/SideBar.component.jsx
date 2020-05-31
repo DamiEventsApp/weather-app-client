@@ -1,16 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import Button from '../button/Button.component';
 import Logo from '../logo/Logo.component';
 import './side-bar.styles.scss';
 
-const SideBar = ( { logout, toggleEventModal } ) => {
+const SideBar = ( { logout, toggleEventModal, history, eventModalOpen } ) => {
+    const handleClick = () => {
+      history.push('/search')
+      if (!eventModalOpen) return;
+      toggleEventModal();
+    }
+
     return (
       <div className="side-bar column">
         <Logo />
         <Button buttonAction={toggleEventModal} className="new-event-btn side-bar-btn">New Event</Button>
-        <Link to="/search" className="search-btn side-bar-btn">Search</Link>
+        <Button  buttonAction={handleClick} className="search-btn side-bar-btn">Search</Button>
         <Button buttonAction={logout} className="logout-btn side-bar-btn">Logout</Button>
       </div>
     )
@@ -19,11 +25,13 @@ const SideBar = ( { logout, toggleEventModal } ) => {
 SideBar.defaultProps = {
     logout: () => {},
     toggleEventModal: () => {},
+    eventModalOpen: false,
 }
 
 SideBar.propTypes = {
     logout: PropTypes.func,
     toggleEventModal: PropTypes.func,
+    eventModalOpen: PropTypes.bool,
 }
 
-export default SideBar;
+export default withRouter(SideBar);

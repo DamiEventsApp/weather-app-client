@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import Button from '../button/Button.component';
 import './event-card.styles.scss';
@@ -17,20 +17,21 @@ const EventCard = ({ event, setCurrentEvent,
     let  [ weatherInfo, setWeatherInfo ] = useState("")
     let  [ weatherIcon, setWeatherIcon ] = useState("")
  
-    date = new Date(date).toDateString();
+    const eventDate = new Date(date).toDateString();
     
+    const fetchData = useCallback(async() => {
+        const res = await weatherAPI.get("/weather", {params: {q: location}});
+        const { data } = res;
+        const { weather } = data;
+        const [ weatherData ] = weather;
+        const { description, icon } = weatherData;
+        setWeatherInfo(description)
+        setWeatherIcon(icon)
+    },[location])
+
     useEffect(() => {
-        const fetchData = async() => {
-            const res = await weatherAPI.get("/weather", {params: {q: location}});
-            const { data } = res;
-            const { weather } = data;
-            const [ weatherData ] = weather;
-            const { description, icon } = weatherData;
-            setWeatherInfo(description)
-            setWeatherIcon(icon)
-        }
         fetchData();
-    });
+    },[fetchData]);
 
     const sendEventDeleteRequest = e => {
         e.preventDefault();
@@ -63,7 +64,7 @@ const EventCard = ({ event, setCurrentEvent,
                 </div>
             </div>
             <div className="event-details">
-                <p>{title}, {date}</p>
+                <p>{title}, {eventDate}</p>
             </div>
         </div>
     )
