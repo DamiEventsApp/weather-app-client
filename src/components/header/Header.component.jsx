@@ -6,10 +6,10 @@ import SearchBar from '../../containers/search-bar/SearchBar.container';
 import './header.styles.scss';
 import NewEventButton from '../new-event-button/NewEventButton.component';
 
-const Header = ({ toggleEventModal }) => {
+const Header = ({ toggleEventModal, toggleMenu }) => {
     return (
         <div className="header row">
-            <div className="menu-icon-holder" onClick={toggleEventModal}>
+            <div className="menu-icon-holder" onClick={toggleMenu}>
                 <FontAwesomeIcon icon={faBars} className="menu-icon"/>
             </div>
             <SearchBar />
@@ -20,10 +20,12 @@ const Header = ({ toggleEventModal }) => {
 
 Header.defaultProps = {
     toggleEventModal: () => {},
+    toggleMenu: () => {},
 }
 
 Header.propTypes = {
     toggleEventModal: PropTypes.func,
+    toggleMenu: PropTypes.func,
 }
 
 export default Header;

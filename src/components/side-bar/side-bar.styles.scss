@@ -1,15 +1,35 @@
 @import '../../component';
 
 div.side-bar {
-    display: none;
     background-color: white;
     height: 100vh;
     align-items: flex-start;
     text-align: left;
+    position: absolute;
+    left: -100%;
+
+    &.open-menu {
+        position: relative;
+        left: 0;
+        width: 100%;
+        // animation: openMenu 250 linear 0s 1 forwards normal;
+
+        @media #{$medium-mq} {
+            width: 50%;
+        }
+
+        .close-icon-holder {
+            position: absolute;
+            top: 1em;
+            right: 1em;
+        }
+    }
     
     @media #{$large-mq} {
         display: flex;
         width: 18%;
+        position: relative;
+        left: 0;
     }
     
     .logo-holder {
@@ -43,5 +63,15 @@ div.side-bar {
                 color: white;
             }
         }
+    }
+}
+
+@keyframes openMenu {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 0;
     }
 }

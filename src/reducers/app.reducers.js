@@ -6,6 +6,10 @@ export const sharedReducer = (state={}, action) => {
             return Object.assign({}, state, { eventModalOpen: !state.eventModalOpen })
         }
 
+        case types.TOGGLE_MENU: {
+            return Object.assign({}, state, { menuOpen: !state.menuOpen })
+        }
+
         default:{
             return state;
         }
