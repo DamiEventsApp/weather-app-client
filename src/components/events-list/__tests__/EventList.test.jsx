@@ -8,5 +8,4 @@ describe('EventList', () => {
         const wrapper = shallow(<EventList />);
         expect(wrapper).toMatchSnapshot();
     });
-
 });
