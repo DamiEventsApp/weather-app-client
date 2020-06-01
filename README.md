@@ -7,7 +7,7 @@ It's an event management app
 
 # Upcoming Features
 * Sign up
-*Flash messages for events
+* Flash messages for events
 
 # What it does
 It is an event management app
