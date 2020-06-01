@@ -5,6 +5,7 @@ import { fetchEvents } from "../../actions/events/events.actions";
 const mapStateToProps = state => ({
     events: state.eventsReducer.events,
     pagination: state.pageReducer.links,
+    isLoading: state.processingReducer.events,
 });
 
 const mapDispatchToProps = dispatch => ({

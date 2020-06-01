@@ -2,6 +2,7 @@
 
 .todays-events {
   margin-top: 3em;
+  position: relative;
   
   @media #{$large-mq} {
     margin-top: 6em;
