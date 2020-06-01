@@ -117,6 +117,28 @@ export const processingReducer = (state={}, action) => {
         case types.STOP_LOGIN: {
             return Object.assign({}, state, { login: false })
         }
+
+        case types.START_FETCHING_EVENTS: {
+            if (action.today) {
+                return Object.assign({}, state, { todaysEvents: true })
+            }
+            return Object.assign({}, state, { events: true })
+        }
+
+        case types.STOP_FETCHING_EVENTS: {
+            if (action.today) {
+                return Object.assign({}, state, { todaysEvents: false })
+            }
+            return Object.assign({}, state, { events: false })
+        }
+
+        case types.START_FETCHING_TODAYS_EVENTS: {
+            return Object.assign({}, state, { todaysEvents: true })
+        }
+
+        case types.STOP_FETCHING_TODAYS_EVENTS: {
+            return Object.assign({}, state, { todaysEvents: false })
+        }
         
         default: {
             return state;

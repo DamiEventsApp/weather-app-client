@@ -3,8 +3,9 @@ import EventCard from '../../containers/event-card/EventCard.container';
 import PropTypes, { objectOf } from 'prop-types';
 import Button from '../button/Button.component';
 import './event-list.styles.scss';
+import Loading from '../loading/Loading.component';
 
-const EventList = ({events, fetchEvents, toggleEventModal, today, authToken }) => {
+const EventList = ({events, fetchEvents, toggleEventModal, today, authToken, isLoading }) => {
 
     const fetchData = useCallback(() => {
         fetchEvents(authToken, today);
@@ -16,6 +17,7 @@ const EventList = ({events, fetchEvents, toggleEventModal, today, authToken }) =
 
     return (
         <div className="event-list">
+            <Loading isLoading={isLoading} />
             {
                 events.length ? 
                 <div className="filled-list">
@@ -36,12 +38,14 @@ EventList.defaultProps = {
     fetchEvents: PropTypes.func,
     toggleEventModal: PropTypes.func,
     events: PropTypes.arrayOf(objectOf(PropTypes.string)),
+    isLoading: PropTypes.bool,
 };
 
 EventList.defaultProps = {
     fetchEvents: () => {},
     toggleEventModal: () => {},
     events: [],
+    isLoading: false,
 };
 
 export default EventList;

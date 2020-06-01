@@ -1,12 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import EventList from '../EventList.component.jsx';
+import Loading from '../Loading.component.jsx';
 import '../../../../setupTests.js';
 
-describe('EventList', () => {
+describe('Loading', () => {
     it('renders correctly', () => {
-        const wrapper = shallow(<EventList />);
+        const wrapper = shallow(<Loading />);
         expect(wrapper).toMatchSnapshot();
     });
-
 });

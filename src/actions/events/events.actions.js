@@ -1,5 +1,15 @@
 import { API, types } from "../components";
 
+const startFetchingEvents = today => ({
+    type: types.START_FETCHING_EVENTS,
+    today,
+});
+
+const stopFetchingEvents = today => ({
+    type: types.STOP_FETCHING_EVENTS,
+    today,
+});
+ 
 const receiveEvents = (events, today=false, search=false) => ({
     type: types.RECEIVE_EVENTS,
     today,
@@ -14,6 +24,9 @@ const receivePagination = (links, today=false, search=false) => ({
 });
 
 export const fetchEvents = (authToken, today=false, search=false, path=false) => async(dispatch) => {
+
+    dispatch(startFetchingEvents(today));
+
     const headers = {
         'Authorization': authToken,
     }
@@ -32,9 +45,11 @@ export const fetchEvents = (authToken, today=false, search=false, path=false) =>
         const {events, meta: {pagination: {links}}} = data
         dispatch(receiveEvents(events, today, search));
         dispatch(receivePagination(links, today));
-
+        setTimeout(() => {
+            dispatch(stopFetchingEvents(today));
+        }, 1000)
     } catch(error) {
-
+        dispatch(stopFetchingEvents(today));
     }
 };
 
